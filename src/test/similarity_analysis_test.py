@@ -1,5 +1,5 @@
 
-from sentence_bert.CosineSimilarity import calculate_cosine_similarity
+from similarity_analysis.sentence_bert.CosineSimilarity import calculate_cosine_similarity
 from sentence_bert.ParseJson import parse_sentences_from_json
 from sentence_bert.Embedding import SentenceEmbedding
 

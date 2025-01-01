@@ -1,23 +1,28 @@
 import time
-from sentence_bert.CosineSimilarity import calculate_cosine_similarity
-from sentence_bert.CosineSimilarity import print_similarity_percentage
+import sys
+sys.path.append("C:/Users/dusvl/Documents/Similarity_Analysis/src")
+from similarity_analysis.sentence_bert.CosineSimilarity import calculate_cosine_similarity,print_similarity_percentage
 
-from sentence_bert.ParseJson import extract_title_and_description
-from sentence_bert.ParseJson import read_json_file
+from similarity_analysis.sentence_bert.ParseJson import extract_title_and_description, read_json_file
 
-from sentence_bert.Embedding import SentenceEmbedding
+from similarity_analysis.sentence_bert.Embedding import SentenceEmbedding
+
+
+
 
 # 시작 시간 측정
 start_time = time.time()
 
 # JSON 파일 읽기
-json_data = read_json_file("src/similarity_analysis/test2.json")
+json_data = read_json_file("src/test/test2.json")
 
 # JSON 데이터에서 문장 추출
 sentences = extract_title_and_description(json_data)
 
+embedding_model_name = []
 # 임베딩 모델을 한 번만 로드하여 문장 임베딩 계산
 embedding_model = SentenceEmbedding()  # 모델은 한 번만 로드됨
+
 embeddings = embedding_model.get_embeddings(sentences)
 
 # 코사인 유사도 계산
